@@ -1,10 +1,22 @@
-
 services:
-  - type: web
-    name: core
+  - name: core
+    type: web
     env: python
+    repo: https://github.com/yaseen1998/djangoEmpty
     buildCommand: pip3 install -r requirements.txt && python manage.py migrate --no-input
-    startCommand: "gunicorn core.wsgi:application"
+    startCommand: ALLOWED_HOSTS=".onrender.com" gunicorn --bind :$PORT --workers 4 --worker-class uvicorn.workers.UvicornWorker core.asgi:application
     envVars:
-      - key: WEB_CONCURRENCY
-        value: 4
+      - key: DJANGO_SETTINGS_MODULE
+        value: core.settings
+      - key: DEBUG
+        value: True
+      - key: NPM_CONFIG_PRODUCTION
+        value: false
+      - key: DEFAULT_FROM_EMAIL
+        value: noreply@example.com
+      - key: ENABLE_ACCOUNT_CONFIRMATION_BY_EMAIL
+        value: False
+      - key: SECRET_KEY
+        generateValue: true
+      - key: PYTHON_VERSION
+        value: 3.10.5
