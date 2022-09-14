@@ -3,7 +3,6 @@ services:
     type: web
     env: docker
     dockerfilePath: ./Dockerfile
-    image: web
     startCommand: "gunicorn core.wsgi:application"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
