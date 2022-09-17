@@ -16,3 +16,4 @@ RUN pip install -r requirements.txt
 COPY . /code/
 
 ENTRYPOINT ["./manage.py" ,"runserver"]
+EXPOSE 8080

@@ -1,23 +1,14 @@
 services:
-  - name: core
-    type: web
+  # A Docker web service
+  - type: web
+    name: djangoEmpty
     env: docker
-    dockerfilePath: ./Dockerfile
-    image: web
-    startCommand: "gunicorn core.wsgi:application"
-    buildCommand: "./build.sh"
-    # envVars:
-    #   - key: DJANGO_SETTINGS_MODULE
-    #     value: core.settings
-    #   - key: DEBUG
-    #     value: True
-    #   - key: NPM_CONFIG_PRODUCTION
-    #     value: false
-    #   - key: DEFAULT_FROM_EMAIL
-    #     value: noreply@example.com
-    #   - key: ENABLE_ACCOUNT_CONFIRMATION_BY_EMAIL
-    #     value: False
-    #   - key: SECRET_KEY
-    #     generateValue: true
-    #   - key: PYTHON_VERSION
-    #     value: 3.10.5
+    repo: https://github.com/yaseen1998/djangoEmpty.git  
+    region: oregon # optional (defaults to oregon)
+    plan: standard # optional (defaults to starter)
+    branch: master # optional (defaults to master)
+    rootDir: djangoEmpty
+    # dockerCommand: ./webdis.sh # optional (defaults to Dockerfile command)
+    numInstances: 3 # optional (defaults to 1)
+    healthCheckPath: /
+  
