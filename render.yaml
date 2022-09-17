@@ -5,18 +5,19 @@ services:
     dockerfilePath: ./Dockerfile
     image: web
     startCommand: "gunicorn core.wsgi:application"
-    envVars:
-      - key: DJANGO_SETTINGS_MODULE
-        value: core.settings
-      - key: DEBUG
-        value: True
-      - key: NPM_CONFIG_PRODUCTION
-        value: false
-      - key: DEFAULT_FROM_EMAIL
-        value: noreply@example.com
-      - key: ENABLE_ACCOUNT_CONFIRMATION_BY_EMAIL
-        value: False
-      - key: SECRET_KEY
-        generateValue: true
-      - key: PYTHON_VERSION
-        value: 3.10.5
+    buildCommand: "./build.sh"
+    # envVars:
+    #   - key: DJANGO_SETTINGS_MODULE
+    #     value: core.settings
+    #   - key: DEBUG
+    #     value: True
+    #   - key: NPM_CONFIG_PRODUCTION
+    #     value: false
+    #   - key: DEFAULT_FROM_EMAIL
+    #     value: noreply@example.com
+    #   - key: ENABLE_ACCOUNT_CONFIRMATION_BY_EMAIL
+    #     value: False
+    #   - key: SECRET_KEY
+    #     generateValue: true
+    #   - key: PYTHON_VERSION
+    #     value: 3.10.5
