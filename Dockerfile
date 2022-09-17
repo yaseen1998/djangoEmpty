@@ -15,6 +15,6 @@ RUN pip install -r requirements.txt
 # Copy project
 COPY . /code/
 
-EXPOSE 8080
-
-ENTRYPOINT ["./manage.py" ,"runserver"]
+ADD entry.sh ./entry.sh
+RUN chmod a+x ./entry.sh
+ENTRYPOINT ["./entry.sh"]
