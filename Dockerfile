@@ -18,4 +18,4 @@ COPY . /code/
 ADD docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod a+x /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD gunicorn mrprinter.wsgi
+CMD gunicorn core.wsgi
