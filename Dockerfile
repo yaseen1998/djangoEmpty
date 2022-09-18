@@ -18,3 +18,4 @@ COPY . /code/
 ADD docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod a+x /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD gunicorn core.wsgi:application --preload --bind 0.0.0.0:8000 --workers=4 -t 300
