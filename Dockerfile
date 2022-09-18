@@ -18,4 +18,4 @@ COPY . /code/
 ADD docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod a+x /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD gunicorn core.wsgi:application --bind https://djangoempty.onrender.com --workers 4
+CMD gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 4
