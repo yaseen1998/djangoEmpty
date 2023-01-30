@@ -23,13 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = "django-insecure-o2!fnh%#elv4d&96sbouc*mkfk_u&!n8$+8(j=x$k$x4%f5ww^"
 SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = 'RENDER' not in os.environ
-ALLOWED_HOSTS = []
+DEBUG = True
+# DEBUG = 'RENDER' not in os.environ
+# ALLOWED_HOSTS = []
 
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+# RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+# if RENDER_EXTERNAL_HOSTNAME:
+#     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 # Application definition
 
 INSTALLED_APPS = [
@@ -75,21 +75,21 @@ WSGI_APPLICATION = "core.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-import dj_database_url
-# 
-DATABASES = {
-    'default': dj_database_url.config(
-        # Feel free to alter this value to suit your needs.
-        default='postgres://dewtdhaz:0dvyd1pqfFiGTdALMeiMtzplDoz7TDdz@jelani.db.elephantsql.com/dewtdhaz',
-        conn_max_age=600
-    )
-}
+# import dj_database_url
+# # 
 # DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
+#     'default': dj_database_url.config(
+#         # Feel free to alter this value to suit your needs.
+#         default='postgres://dewtdhaz:0dvyd1pqfFiGTdALMeiMtzplDoz7TDdz@jelani.db.elephantsql.com/dewtdhaz',
+#         conn_max_age=600
+#     )
 # }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
 
 
 # Password validation
@@ -129,9 +129,9 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 #STATIC_URL = "static/"
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# if not DEBUG:
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
