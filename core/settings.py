@@ -21,16 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = "django-insecure-o2!fnh%#elv4d&96sbouc*mkfk_u&!n8$+8(j=x$k$x4%f5ww^"
-SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
+SECRET_KEY = '123456789'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 # DEBUG = 'RENDER' not in os.environ
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = [ "https://djangoempty-production-91b1.up.railway.app" ]
 
-# RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-# if RENDER_EXTERNAL_HOSTNAME:
-#     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-# Application definition
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -128,10 +125,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#STATIC_URL = "static/"
-# if not DEBUG:
-#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
